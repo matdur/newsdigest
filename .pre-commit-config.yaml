@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - django-stubs[compatible-mypy]==5.2.5
+          - django==5.2.6
+        args: ["--config-file", "newsdigest/pyproject.toml"]
+
+  - repo: https://github.com/Riverside-Healthcare/pre-commit-djlint
+    rev: v1.36.4
+    hooks:
+      - id: djlint-django
+        additional_dependencies: [djlint==1.36.4]
+
